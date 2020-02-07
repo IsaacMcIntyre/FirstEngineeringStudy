@@ -1,11 +1,14 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstEngineeringStudy", "FirstEngineeringStudy\FirstEngineeringStudy.csproj", "{419BC96C-6D81-4BC5-8708-5FF01E6BD57C}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstEngineeringStudy", "FirstEngineeringStudy\FirstEngineeringStudy.csproj", "{419BC96C-6D81-4BC5-8708-5FF01E6BD57C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstEngineeringStudy.IntegrationTest", "FirstEngineeringStudy.IntegrationTest\FirstEngineeringStudy.IntegrationTest.csproj", "{32860E97-567E-42F2-A1F3-F9842A2AB5DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstEngineeringStudy.IntegrationTest", "FirstEngineeringStudy.IntegrationTest\FirstEngineeringStudy.IntegrationTest.csproj", "{32860E97-567E-42F2-A1F3-F9842A2AB5DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstEngineeringStudy.UnitTest", "FirstEngineeringStudy.UnitTest\FirstEngineeringStudy.UnitTest.csproj", "{C3B6FBD4-68A7-4F2D-8F2E-EFF2E55B6952}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstEngineeringStudy.UnitTest", "FirstEngineeringStudy.UnitTest\FirstEngineeringStudy.UnitTest.csproj", "{C3B6FBD4-68A7-4F2D-8F2E-EFF2E55B6952}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstEngineeringStudy.DataLayer", "FirstEngineeringStudy.DataLayer\FirstEngineeringStudy.DataLayer.csproj", "{51A43ACE-B0EA-49AC-A403-F75F9C595E5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,5 +28,15 @@ Global
 		{C3B6FBD4-68A7-4F2D-8F2E-EFF2E55B6952}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3B6FBD4-68A7-4F2D-8F2E-EFF2E55B6952}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3B6FBD4-68A7-4F2D-8F2E-EFF2E55B6952}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51A43ACE-B0EA-49AC-A403-F75F9C595E5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51A43ACE-B0EA-49AC-A403-F75F9C595E5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51A43ACE-B0EA-49AC-A403-F75F9C595E5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51A43ACE-B0EA-49AC-A403-F75F9C595E5E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2B3D1933-BD81-49F6-8C56-3B9383CCEF5B}
 	EndGlobalSection
 EndGlobal

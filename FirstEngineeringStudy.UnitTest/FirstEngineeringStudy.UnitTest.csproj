@@ -19,6 +19,7 @@
     <Folder Include="Stubs\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FirstEngineeringStudy.DataLayer\FirstEngineeringStudy.DataLayer.csproj" />
     <ProjectReference Include="..\FirstEngineeringStudy\FirstEngineeringStudy.csproj" />
   </ItemGroup>
 </Project>
