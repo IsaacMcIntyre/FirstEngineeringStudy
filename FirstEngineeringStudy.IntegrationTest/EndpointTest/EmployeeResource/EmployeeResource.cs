@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using FirstEngineeringStudy.ViewModels.Club;
 using Microsoft.AspNetCore.Mvc.Testing;
 using NUnit.Framework;
 
@@ -28,6 +29,20 @@ namespace FirstEngineeringStudy.IntegrationTest
 
             //Assert
             Assert.AreEqual(200, (int)response.StatusCode);
+            Assert.AreEqual("application/json; charset=utf-8", response.Content.Headers.ContentType.ToString());
+        }
+
+        public async Task Get_EndpointReturnEmployeeWithClub()
+        {
+            //Arrange
+            const string url = "/api/employee";
+            var client = _factory.CreateClient();
+
+            //Act
+            var response = await client.GetAsync(url);
+
+            //Assert
+            
             Assert.AreEqual("application/json; charset=utf-8", response.Content.Headers.ContentType.ToString());
         }
 
