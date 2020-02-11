@@ -1,7 +1,7 @@
 ﻿using FirstEngineeringStudy.DataLayer.Contexts;
 using FirstEngineeringStudy.DataLayer.DataModels;
-using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -14,10 +14,10 @@ namespace FirstEngineeringStudy.UnitTest.DatabaseTests
     public class EmployeeTests
     {
 
-        private DbContextOptions<DatabaseContext> GetDbContextOptions(SqliteConnection connection)
+        private DbContextOptions<DatabaseContext> GetDbContextOptions(string dbName)
         {
             var options = new DbContextOptionsBuilder<DatabaseContext>()
-                    .UseSqlite(connection)
+                    .UseInMemoryDatabase(databaseName: dbName)
                     .Options;
 
             using (var context = new DatabaseContext(options))
@@ -32,41 +32,28 @@ namespace FirstEngineeringStudy.UnitTest.DatabaseTests
         public void GetAllEmployeesFromDatabase()
         {
             //Arrange
-            var connection = new SqliteConnection("DataSource=:memory:");
-            try
+            var options = GetDbContextOptions("GetAll");
+            using (var context = new DatabaseContext(options))
             {
-                connection.Open();
-                var options = GetDbContextOptions(connection);
-                using(var context = new DatabaseContext(options))
+                context.Employees.AddRange(new List<Employee>()
                 {
-                    context.Employees.AddRange(new List<Employee>()
-                    {
-                        new Employee { FullName = "Jordan" },
-                        new Employee { FullName = "Andrew" },
-                        new Employee { FullName = "Isaac" }
-                    });
-                    context.SaveChanges();
-                }
-
-                //Act
-                int employeeCount;
-                using (var context = new DatabaseContext(options))
-                {
-                    employeeCount = context.Employees.Count();
-                }
-
-                //Assert
-                Assert.AreEqual(3, employeeCount);
-
+                    new Employee { FullName = "Jordan" },
+                    new Employee { FullName = "Andrew" },
+                    new Employee { FullName = "Isaac" }
+                });
+                context.SaveChanges();
             }
-            catch (System.Exception e)
+
+            //Act
+            int employeeCount;
+            using (var context = new DatabaseContext(options))
             {
-                Assert.Fail("Connection to DB likely failed");
+                employeeCount = context.Employees.Count();
             }
-            finally
-            {
-                connection.Close();
-            }
+
+            //Assert
+            Assert.AreEqual(3, employeeCount);
+
         }
     }
 }

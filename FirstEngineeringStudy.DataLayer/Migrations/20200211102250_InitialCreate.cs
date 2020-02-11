@@ -2,7 +2,7 @@
 
 namespace FirstEngineeringStudy.DataLayer.Migrations
 {
-    public partial class InitialCreat : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,7 +11,7 @@ namespace FirstEngineeringStudy.DataLayer.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     FullName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

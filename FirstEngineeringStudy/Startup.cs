@@ -2,7 +2,6 @@ using FirstEngineeringStudy.BusinessLayer;
 using FirstEngineeringStudy.DataLayer.Contexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,8 +23,8 @@ namespace FirstEngineeringStudy
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DatabaseContext>(options => options.UseSqlite(Configuration.GetConnectionString("DatabaseContext"), b => b.MigrationsAssembly("FirstEngineeringStudy.DataLayer")));
-
+            services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DatabaseContext"),
+                b => b.MigrationsAssembly("FirstEngineeringStudy.DataLayer")));
             services.AddTransient<IEmployeeDataRetrieval, EmployeeDataRetrieval>();
             services.AddScoped<IDatabaseContext>(provider => provider.GetService<DatabaseContext>());
             services.AddControllers();
