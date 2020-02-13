@@ -9,7 +9,6 @@
     <Folder Include="Controllers\" />
     <Folder Include="ViewModels\" />
     <Folder Include="ViewModels\Employee\" />
-    <Folder Include="BusinessLayer\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Controllers\WeatherForecastController.cs" />

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc.Testing;
+using FirstEngineeringStudy.IntegrationTests;
 using NUnit.Framework;
 
 namespace FirstEngineeringStudy.IntegrationTest
@@ -8,12 +8,12 @@ namespace FirstEngineeringStudy.IntegrationTest
     [TestFixture]
     public class EmployeeResource
     {
-        private WebApplicationFactory<Startup> _factory;
+        private CustomWebApplicationFactory<Startup> _factory;
 
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
-            _factory = new WebApplicationFactory<Startup>();
+            _factory = new CustomWebApplicationFactory<Startup>();
         }
 
         [Test]
@@ -52,7 +52,7 @@ namespace FirstEngineeringStudy.IntegrationTest
             const string url = "/api/employee/1";
             var client = _factory.CreateClient();
 
-            //Act
+            //Act'
             var response = await client.GetAsync(url);
 
             //Assert

@@ -20,15 +20,21 @@ namespace FirstEngineeringStudy.DataLayer.Migrations
 
             modelBuilder.Entity("FirstEngineeringStudy.DataLayer.DataModels.Employee", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("EmployeeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("ClubId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EmployeeNumber")
+                        .HasColumnType("int");
+
                     b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("EmployeeId");
 
                     b.ToTable("Employees");
                 });
