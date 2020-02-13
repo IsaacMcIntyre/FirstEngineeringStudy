@@ -11,15 +11,23 @@ namespace FirstEngineeringStudy.BusinessLayer.Mapping
     {
         public EmployeeResponseVm DataModelToRetrievalViewModel(Employee employee)
         {
-            return new EmployeeResponseVm();
+            if (employee == null)
+            {
+                throw new ArgumentException("Employee must not be null.");
+            }
+            return new EmployeeResponseVm(employee.EmployeeId, employee.Email, employee.EmployeeNumber, employee.FullName, employee.DOB, employee.StartDate, employee.Salary);
         }
 
-
+        public EmployeeResponseVm[] DataModelToRetrievalViewModel(Employee[] employees)
+        {
+            return employees.Select(employee => DataModelToRetrievalViewModel(employee)).ToArray();
+        }
     }
 
     public interface IEmployeeMapping
     {
         public EmployeeResponseVm DataModelToRetrievalViewModel(Employee employee);
+        public EmployeeResponseVm[] DataModelToRetrievalViewModel(Employee[] employees);
 
     }
 

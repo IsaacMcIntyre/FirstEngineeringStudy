@@ -35,7 +35,7 @@ namespace FirstEngineeringStudy.UnitTest.BusinessLayerTests
             var mockDbContext = Substitute.For<IDatabaseContext>();
             var employeeMock = Substitute.For<DbSet<Employee>, IQueryable<Employee>>();
             var employeeDataRetrieval = new EmployeeDataRetrieval(mockDbContext);
-            ((IQueryable<Employee>)employeeMock).GetEnumerator().Returns(data.GetEnumerator());
+            ((IQueryable<Employee>) employeeMock).GetEnumerator().Returns(data.GetEnumerator());
             mockDbContext.Employees.Returns(employeeMock);
 
             //Act

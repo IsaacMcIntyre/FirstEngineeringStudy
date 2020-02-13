@@ -40,6 +40,7 @@ namespace FirstEngineeringStudy
                 using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
                 {
                     var context = serviceScope.ServiceProvider.GetRequiredService<DatabaseContext>();
+
                     if (context.Database.ProviderName != "Microsoft.EntityFrameworkCore.InMemory")
                     {
                         context.Database.Migrate();
