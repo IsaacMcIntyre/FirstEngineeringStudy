@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using FirstEngineeringStudy.BusinessLayer.Mapping;
 using FirstEngineeringStudy.DataLayer.Contexts;
 using FirstEngineeringStudy.ViewModels.Employee;
 
@@ -16,8 +17,8 @@ namespace FirstEngineeringStudy.BusinessLayer
         public EmployeeResponseVm[] GetEmployees()
         {
             var employees = _context.Employees.ToArray();
-
-            return employees.Select(x => new EmployeeResponseVm()).ToArray();
+            var employeeMapping = new EmployeeMapping();
+            return employeeMapping.DataModelToRetrievalViewModel(employees);
         }
     }
 }

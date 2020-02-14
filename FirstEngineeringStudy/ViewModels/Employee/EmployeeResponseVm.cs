@@ -1,12 +1,11 @@
 ﻿using System;
+
 namespace FirstEngineeringStudy.ViewModels.Employee
 {
     public class EmployeeResponseVm
     {
-        public EmployeeResponseVm()
-        {
-        }
-        public EmployeeResponseVm(int employeeId, string email, int employeeNumber, string fullName, DateTime dob, DateTime startDate, float salary)
+        public EmployeeResponseVm(int employeeId, string email, int employeeNumber, string fullName, DateTime dob,
+            DateTime startDate, float salary)
         {
             EmployeeId = employeeId;
             Email = email;
@@ -24,6 +23,5 @@ namespace FirstEngineeringStudy.ViewModels.Employee
         public DateTime DOB { get; set; }
         public DateTime StartDate { get; set; }
         public float Salary { get; set; }
-
     }
 }

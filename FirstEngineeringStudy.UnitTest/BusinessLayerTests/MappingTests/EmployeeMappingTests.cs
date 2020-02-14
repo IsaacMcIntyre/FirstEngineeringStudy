@@ -1,7 +1,7 @@
 ﻿using System;
 using FirstEngineeringStudy.BusinessLayer.Mapping;
 using FirstEngineeringStudy.DataLayer.DataModels;
-using NSubstitute.Core;
+using FirstEngineeringStudy.ViewModels.Employee;
 using NUnit.Framework;
 
 namespace FirstEngineeringStudy.UnitTest.BusinessLayerTests.MappingTests
@@ -13,7 +13,11 @@ namespace FirstEngineeringStudy.UnitTest.BusinessLayerTests.MappingTests
         public void MapsEmployeeDataModelToEmployeeRetrievalViewModelWhichIsNotNull()
         {
             //Arrange
-            var employeeDataModel = new Employee();
+            var employeeDataModel = new Employee
+            {
+                EmployeeId = 1, Email = "email@email.email", EmployeeNumber = 1, FullName = "John Doe", 
+                DOB = new DateTime(), StartDate = new DateTime(), Salary = 500000, ClubId = 1, LicenseId = 1
+            };
             var employeeMapping = new EmployeeMapping();
 
             //Act
@@ -27,7 +31,11 @@ namespace FirstEngineeringStudy.UnitTest.BusinessLayerTests.MappingTests
         public void MapsEmployeeDataModelToEmployeeRetrievalViewModelHasAllRequiredDataMatching()
         {
             //Arrange
-            var employeeDataModel = new Employee(1, "email@email.email", 1, "John Doe", new DateTime(), new DateTime(), 500000, 1, 1);
+            var employeeDataModel = new Employee
+            {
+                EmployeeId = 1, Email = "email@email.email" , EmployeeNumber = 1, FullName = "John Doe", 
+                DOB = new DateTime(), StartDate = new DateTime(), Salary = 500000, ClubId = 1, LicenseId = 1
+            };
             var employeeMapping = new EmployeeMapping();
 
             //Act
@@ -58,7 +66,19 @@ namespace FirstEngineeringStudy.UnitTest.BusinessLayerTests.MappingTests
         public void MapsEmployeeDataModelArrayToEmployeeRetrievalViewModelArrayWhichIsNotEmpty()
         {
             //Arrange
-            Employee[] employeeDataModelArray = {new Employee(), new Employee()};
+            Employee[] employeeDataModelArray =
+            {
+                new Employee
+                {
+                    EmployeeId = 1, Email = "email@email.email" , EmployeeNumber = 1, FullName = "John Doe", 
+                    DOB = new DateTime(), StartDate = new DateTime(), Salary = 500000, ClubId = 1, LicenseId = 1
+                },
+                new Employee
+                {
+                    EmployeeId = 1, Email = "email@email.email", EmployeeNumber = 1, FullName = "John Doe", 
+                    DOB = new DateTime(), StartDate = new DateTime(), Salary = 500000, ClubId = 1, LicenseId = 1
+                }
+            };
             var employeeMapping = new EmployeeMapping();
 
             //Act
@@ -72,7 +92,19 @@ namespace FirstEngineeringStudy.UnitTest.BusinessLayerTests.MappingTests
         public void MapsTwoEmployeeDataModelsInArrayToEmployeeRetrievalViewModelArrayWhichHasTwoElements()
         {
             //Arrange
-            Employee[] employeeDataModelArray = { new Employee(), new Employee() };
+            Employee[] employeeDataModelArray =
+            {
+                new Employee
+                {
+                    EmployeeId = 1, Email = "email@email.email" , EmployeeNumber = 1, FullName = "John Doe", 
+                    DOB = new DateTime(), StartDate = new DateTime(), Salary = 500000, ClubId = 1, LicenseId = 1
+                },
+                new Employee
+                {
+                    EmployeeId = 1, Email = "email@email.email", EmployeeNumber = 1, FullName = "John Doe", 
+                    DOB = new DateTime(), StartDate = new DateTime(), Salary = 500000, ClubId = 1, LicenseId = 1
+                }
+            };
             var employeeMapping = new EmployeeMapping();
 
             //Act
@@ -82,6 +114,18 @@ namespace FirstEngineeringStudy.UnitTest.BusinessLayerTests.MappingTests
             Assert.AreEqual(2, employeeResponseVm.Length);
         }
 
+        [Test]
+        public void MapsEmptyEmployeeDataModelArrayToEmployeeRetrievalViewModelArray()
+        {
+            //Arrange
+            Employee[] employeeDataModelArray = { };
+            var employeeMapping = new EmployeeMapping();
 
+            //Act
+            var employeeResponseVmArray = employeeMapping.DataModelToRetrievalViewModel(employeeDataModelArray);
+
+            //Assert
+            Assert.IsInstanceOf(typeof(EmployeeResponseVm[]), employeeResponseVmArray);
+        }
     }
 }
